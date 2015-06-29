@@ -1,2 +1,13 @@
 <h1>Welcome to Treemo</h1>
 <p>Contributing to reforestation one check-in at a time</p>
+
+<h2>
+
+  Users:<p>
+
+  <% if User.all.any? %>
+    <% User.all.each do |user| %>
+    <%= user.email %>
+  <% end %>
+  </h2>
+<% end %>
