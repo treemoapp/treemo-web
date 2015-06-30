@@ -1,10 +1,9 @@
 require 'rails_helper'
-require 'byebug'
 
 feature 'user can sign in and sign out' do
   context 'user not signed in and visits homepage' do
     it 'should see Sign in with Facebook' do
-      visit '/'
+      visit root_path
       expect(page).to have_link('Sign in with Facebook')
     end
 
