@@ -29,9 +29,12 @@ feature 'user can sign in and sign out' do
       visit root_path
     end
 
-    it 'should see signout link' do
+    it 'should see signout link and user name' do
       click_link 'Sign in with Facebook'
       expect(page).to have_link('Sign out')
+      expect(page).to have_content('John Doe')
+      click_link 'Sign out'
+      expect(page).to have_link('Sign in with Facebook')
     end
 
     it "shouldn't see signup or signin link" do
