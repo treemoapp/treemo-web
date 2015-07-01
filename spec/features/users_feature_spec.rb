@@ -20,10 +20,10 @@ feature 'user can sign in and sign out' do
         'provider'  => 'facebook',
         'uid'       => 12345,
         'info' => {
-          'email' => 'email@email.com',
-          'name'       => 'John Doe',
-          'image'       => 'http://robohash.org/treemo'
-          # any other attributes you want to stub out for testing
+        'email' => 'email@email.com',
+        'name'       => 'John Doe',
+        'image'       => 'http://robohash.org/treemo'
+        # any other attributes you want to stub out for testing
         }
       }
       visit root_path
