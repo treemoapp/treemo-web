@@ -10,3 +10,4 @@ require 'faker'
                         lat: Faker::Address.latitude,
                         lng: Faker::Address.longitude)
 end
+
