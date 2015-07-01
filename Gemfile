@@ -37,7 +37,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'omniauth-facebook'
 gem 'shoulda'
-
+gem 'faker'
 
 group :development, :test do
 
