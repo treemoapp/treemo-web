@@ -46,7 +46,7 @@ Project planning: https://drive.google.com/folderview?id=0B2Rum2zEpwhgT1NJTGlJc0
 
 ## Tech stack - web
 - Rails, Postgres, Angular
-- Testing: Unit & Feature 
+- Testing: Unit & Feature
 - Bootstrap?
 - Travis CI
 - Coveralls
@@ -69,6 +69,14 @@ bundle
 bin/rake db:create
 rails s
 ```
+
+Add the following ~/.bash_profile:
+
+export TREEMO_APP_ID=''
+export TREEMO_APP_SECRET=''
+
+Actual IDs will be circulated within the team
+
 Now visit http://localhost:3000/ in your browser!
 
 #### Tests
