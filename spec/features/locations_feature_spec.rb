@@ -47,7 +47,7 @@ feature 'user can sign in and sign out' do
       OmniAuth.config.mock_auth[:facebook] = nil
       visit '/locations/new'
       expect(page).not_to have_content('New location')
-      # expect(page).to have_content('You must login')
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
   end
 end
