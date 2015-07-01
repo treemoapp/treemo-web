@@ -37,7 +37,7 @@ feature 'user can sign in and sign out' do
       fill_in 'Lng', with: -0.073387
       click_button 'Create Location'
       expect(page).to have_content('Location was successfully created.')
-      location = Location.first
+      location = Location.last
       expect(location.name).to eq 'Trade'
       expect(location.user).to eq user
     end

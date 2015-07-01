@@ -26,6 +26,7 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
+    @location.user_id = current_user.id
 
     respond_to do |format|
       if @location.save
