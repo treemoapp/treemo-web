@@ -10,7 +10,7 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Facebook</th>
+            <th>User</th>
             <th>Name</th>
             <th>Lat</th>
             <th>Lng</th>
@@ -22,7 +22,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @locations) do |location| %>
-            <td><%= location.facebook_id %></td>
+            <td><%= location.user.name %></td>
             <td><%= location.name %></td>
             <td><%= location.lat %></td>
             <td><%= location.lng %></td>
