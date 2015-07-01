@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/geokit/geokit-rails.git
+  revision: 2896ea456e9fa59c6975ec383c0e1eed0f0d8a8e
+  specs:
+    geokit-rails (2.1.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,6 +97,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    geokit (1.9.0)
+      multi_json (>= 1.3.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -256,6 +266,8 @@ DEPENDENCIES
   coveralls
   devise
   faker
+  geokit
+  geokit-rails!
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
