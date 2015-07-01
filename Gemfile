@@ -36,6 +36,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'omniauth-facebook'
+gem 'shoulda'
 
 
 group :development, :test do

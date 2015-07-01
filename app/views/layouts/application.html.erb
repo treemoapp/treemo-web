@@ -36,6 +36,10 @@
 				<ul class="nav navbar-nav navbar-right">
 					<% if user_signed_in? %>
 						<li>
+							<%= link_to("Add location", new_location_path, class: 'btn btn-default')  %>
+						</li>
+
+						<li>
 							<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 						</li>
 						<li>
