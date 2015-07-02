@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701143712) do
+ActiveRecord::Schema.define(version: 20150702095540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "locations", force: :cascade do |t|
-    t.integer  "facebook_id"
+    t.integer  "facebook_id", limit: 8
     t.string   "name"
     t.decimal  "lat"
     t.decimal  "lng"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "user_id"
   end
 
