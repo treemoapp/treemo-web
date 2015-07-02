@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Location, type: :model do
   it { is_expected.to belong_to :user }
+  it { is_expected.to have_many :checkins }
 
   it 'should accept facebook ids' do
     Location.create(facebook_id: 123456789012346)
