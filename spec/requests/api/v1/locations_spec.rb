@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'byebug'
 
 describe "Locations API" do
     before do
