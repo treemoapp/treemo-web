@@ -1,5 +1,6 @@
 class CheckinsController < ApplicationController
-  before_action :set_checkin, only: [:show, :edit, :update, :destroy]
+  # before_action :set_checkin, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery unless: -> { request.format.json? }
 
   # GET /checkins
   # GET /checkins.json

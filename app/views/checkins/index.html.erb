@@ -20,8 +20,8 @@
 
     <tbody>
       <%= content_tag_for(:tr, @checkins) do |checkin| %>
-            <td><%= checkin.user %></td>
-            <td><%= checkin.location %></td>
+            <td><%= checkin.user.name %></td>
+            <td><%= checkin.location.name %></td>
             <td><%= link_to 'Show', checkin %></td>
         <td><%= link_to 'Edit', edit_checkin_path(checkin) %></td>
         <td><%= link_to 'Destroy', checkin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
