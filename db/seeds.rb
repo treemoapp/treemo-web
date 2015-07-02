@@ -10,4 +10,7 @@ require 'faker'
                         lat: Faker::Address.latitude,
                         lng: Faker::Address.longitude,
                         facebook_id: Faker::Number.number(16))
+
+  Checkin.create(user_id: User.all.sample.id,
+                location_id: Location.all.sample.id)
 end
