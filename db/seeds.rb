@@ -8,6 +8,6 @@ require 'faker'
 
   user.locations.create(name: Faker::Company.name,
                         lat: Faker::Address.latitude,
-                        lng: Faker::Address.longitude)
+                        lng: Faker::Address.longitude,
+                        facebook_id: Faker::Number.number(16))
 end
-
