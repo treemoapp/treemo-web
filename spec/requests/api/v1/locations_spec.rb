@@ -11,11 +11,19 @@ describe "Locations API" do
                                           lng: -0.082336)
     end
 
-  it "sends list of locations" do
+  it "sends list of locations sorted by closest" do
     get '/locations.json?lat=51.525685&lng=-0.087627'
     expect(response).to be_success
     json = JSON.parse(response.body)
     expect(json.count).to eq(2)
     expect(json.first["name"]).to eq("Old St")
+  end
+
+  it "responds if there is no location" do
+    get '/locations' # should be locations.json but not sure how to add conditional on controller
+    expect(response).to be_success
+    # json = JSON.parse(response.body)
+    # expect(json.count).to eq(2)
+    # expect(json.first["name"]).to eq("Cockthorpe")
   end
 end
