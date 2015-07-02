@@ -86,6 +86,12 @@ bin/rake db:create RAILS_ENV=test
 rspec
 ```
 
+Seed Database
+
+This creates 200 users and 200 locations:
+
+```bin/rake db:seed```
+
 Reset database:
 
 ```bin/rake db:reset```

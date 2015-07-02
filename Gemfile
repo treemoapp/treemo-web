@@ -38,6 +38,7 @@ gem 'bootstrap-generators', '~> 3.3.4'
 gem 'omniauth-facebook'
 gem 'shoulda'
 gem 'faker'
+gem 'geokit-rails'
 
 group :development, :test do
 

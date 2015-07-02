@@ -1,11 +1,16 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+
+    @coordinates = Location.new(lat: params[:lat], lng: params[:lng])
+
+    # @coordinates[:lat] = params[:lat]
+    # @coordinates[:lng] = params[:lng]
+    @coordinates.lat && @coordinates.lng ? @locations = Location.by_distance(origin: @coordinates) : @locations = Location.all
   end
 
   # GET /locations/1
@@ -64,13 +69,14 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def location_params
-      params.require(:location).permit(:facebook_id, :name, :lat, :lng)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def location_params
+    params.require(:location).permit(:facebook_id, :name, :lat, :lng)
+  end
 end
