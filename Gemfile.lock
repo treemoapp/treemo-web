@@ -89,6 +89,11 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    geokit (1.9.0)
+      multi_json (>= 1.3.2)
+    geokit-rails (2.1.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -257,6 +262,7 @@ DEPENDENCIES
   coveralls
   devise
   faker
+  geokit-rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook

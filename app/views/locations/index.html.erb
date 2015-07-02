@@ -3,7 +3,8 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Location
   <% end %>
-  <h1>Listing locations</h1>
+
+  <h1>Listing locations close to <%= "#{@coordinates[:lat]} and #{@coordinates[:lng]}" %></h1>
 </div>
 
 <div class="table-responsive">
@@ -14,6 +15,7 @@
             <th>Name</th>
             <th>Lat</th>
             <th>Lng</th>
+            <th>Miles away</th>
             <th></th>
         <th></th>
         <th></th>
@@ -26,6 +28,7 @@
             <td><%= location.name %></td>
             <td><%= location.lat %></td>
             <td><%= location.lng %></td>
+            <td><%= location.respond_to?(:distance) ? number_to_human(location.distance, units: :distance, precision: 2) : nil %></td>
             <td><%= link_to 'Show', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

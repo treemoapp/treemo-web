@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+
+  distance:
+
+    unit:
+      one: "mile"
+      other: "miles"
+
+    billion: "gazillion-distance"
