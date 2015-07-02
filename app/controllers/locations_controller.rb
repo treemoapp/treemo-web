@@ -1,5 +1,3 @@
-require 'byebug'
-
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]

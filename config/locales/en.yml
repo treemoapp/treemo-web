@@ -23,13 +23,9 @@ en:
   hello: "Hello world"
 
   distance:
-    centi:
-      one: "centimeter"
-      other: "centimeters"
+
     unit:
-      one: "meter"
-      other: "meters"
-    thousand:
-      one: "kilometer"
-      other: "kilometers"
+      one: "mile"
+      other: "miles"
+
     billion: "gazillion-distance"
