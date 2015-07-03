@@ -11,9 +11,9 @@ class CheckinsController < ApplicationController
   # POST /checkins
   # POST /checkins.json
   def create
-    user_id = User.where(uid: checkin_params["fb_user_id"]).first.id
-    location_id = Location.where(facebook_id: checkin_params["fb_location_id"]).first.id
-    @checkin = Checkin.new(user_id: user_id, location_id: location_id)
+    user = User.find_by(uid: checkin_params["fb_user_id"])
+    location = Location.find_by(facebook_id: checkin_params["fb_location_id"])
+    @checkin = Checkin.new(user: user, location: location)
 
     respond_to do |format|
       if @checkin.save
