@@ -95,3 +95,23 @@ This creates 200 users and 200 locations:
 Reset database:
 
 ```bin/rake db:reset```
+
+## API Calls
+### GET Locations
+
+http://localhost:3000/locations.json?lat=5.09703679&lng=0.361858
+Required parameters: lat, lng
+
+### POST Checkin
+http://localhost:3000/checkins.json
+Required parameters: fb_location_id, fb_user_id
+
+Request example via terminal:
+```
+$ curl -H 'Content-Type: application/json'  -X POST http://localhost:3000/checkins.json -d "{\"checkin\":{\"fb_user_id\":\"2215598518618201\", \"fb_location_id\":\"6028637512237347\"}}"
+
+```
+Expected response:
+```
+{"id":203,"user_id":25,"location_id":25}
+```
