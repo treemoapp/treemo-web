@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
+  resources :checkins
   resources :locations
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

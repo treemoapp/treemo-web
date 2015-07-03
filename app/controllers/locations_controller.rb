@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:update]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
