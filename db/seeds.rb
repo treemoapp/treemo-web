@@ -4,6 +4,7 @@ require 'faker'
   user = User.create(name:Faker::Name.name,
               email:Faker::Internet.email,
               image:Faker::Avatar.image,
+              uid: Faker::Number.number(16)
               )
 
   user.locations.create(name: Faker::Company.name,

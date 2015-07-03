@@ -11,7 +11,9 @@ class CheckinsController < ApplicationController
   # POST /checkins
   # POST /checkins.json
   def create
-    @checkin = Checkin.new(checkin_params)
+    user_id = User.where(uid: checkin_params["fb_user_id"]).first.id
+    location_id = Location.where(facebook_id: checkin_params["fb_location_id"]).first.id
+    @checkin = Checkin.new(user_id: user_id, location_id: location_id)
 
     respond_to do |format|
       if @checkin.save
@@ -32,6 +34,6 @@ class CheckinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checkin_params
-      params.require(:checkin).permit(:user_id, :location_id)
+      params.require(:checkin).permit(:user_id, :location_id, :fb_user_id, :fb_location_id)
     end
 end
