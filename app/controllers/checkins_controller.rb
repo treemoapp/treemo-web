@@ -1,5 +1,3 @@
-require 'byebug'
-
 class CheckinsController < ApplicationController
   # before_action :set_checkin, only: [:show, :edit, :update, :destroy]
   protect_from_forgery unless: -> { request.format.json? }
@@ -14,7 +12,6 @@ class CheckinsController < ApplicationController
   # POST /checkins.json
   def create
     user = User.find_by(uid: checkin_params["fb_user_id"])
-    byebug
     location = Location.find_by(facebook_id: checkin_params["fb_location_id"])
     @checkin = Checkin.new(user: user, location: location)
 
