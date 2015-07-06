@@ -5,7 +5,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.order(id: :desc)
   end
 
   # POST /checkins
