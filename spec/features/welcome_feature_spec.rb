@@ -22,12 +22,17 @@ feature 'user can sign in and sign out' do
       # byebug
     end
 
+    it 'prompts user to add a location' do
+      visit root_path
+      expect(page).to have_css('div#add-location')
+      expect(page).not_to have_css('div#chart-1')
+    end
+
 
     it 'sees stats graph' do
       Location.create(user: User.first, name: 'Trade')
       Checkin.create(user: User.first, location: Location.first)
       visit root_path
-      save_and_open_page
       expect(page).to have_content('1 locations')
       expect(page).to have_content('1 checkins all time')
       expect(page).to have_content('Trade')
