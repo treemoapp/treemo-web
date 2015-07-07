@@ -24,7 +24,7 @@
       </div>
     </div>
   <div class="panel-body">
-    <%= area_chart location.checkins.group_by_day(:created_at).count %>
+    <%= column_chart location.checkins.group_by_day(:created_at).count %>
   </div>
   </div>
   <% end %>
