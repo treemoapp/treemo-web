@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    User.all
+    @locations = Location.where(user: current_user)
   end
 end

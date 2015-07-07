@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'user can sign in and sign out' do
   context 'user not signed in and visits homepage' do
-    it 'should see Sign in with Facebook' do
+    it 'sees sign in with Facebook & carousel' do
       visit root_path
       expect(page).to have_link('Sign in with Facebook')
+      expect(page).to have_css('div#myCarousel')
     end
 
     it "shoudln\'t see a sign out link" do
@@ -33,8 +34,10 @@ feature 'user can sign in and sign out' do
       click_link 'Sign in with Facebook'
       expect(page).to have_link('Sign out')
       expect(page).to have_content('John Doe')
+      expect(page).not_to have_css('div#myCarousel')
       click_link 'Sign out'
       expect(page).to have_link('Sign in with Facebook')
+      expect(page).to have_css('div#myCarousel')
     end
 
     it "shouldn't see signup or signin link" do
