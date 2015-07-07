@@ -3,13 +3,13 @@
 
 <% if @locations.count > 0 %>
 
-<h3><%= @locations.count  %> locations total <small><%= @locations.map {|location| location.checkins.count}.inject(:+)  %> checkins all time</small></h3>
+<h3><%= pluralize(@locations.count, "location")  %> total <small><%=  pluralize(@locations.map {|location| location.checkins.count}.inject(:+), "checkin")  %> all time</small></h3>
 <%= content_tag_for(:tr, @locations) do |location| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="container-fluid panel-container">
         <div class="col-xs-6 text-left">
-          <h2 class="panel-title"><%= location.name %> <small>(<%= location.checkins.count %> total checkins last 30 days)</small></h2>
+          <h2 class="panel-title"><%= location.name %> <small>(<%= pluralize(location.checkins.count, "checkin") %> total last 30 days)</small></h2>
         </div>
         <div class="col-xs-3 col-md-offset-3 text-right">
            <%= link_to 'Edit', edit_location_path(location) %>
