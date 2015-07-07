@@ -1,6 +1,24 @@
 <div class="table-responsive">
+<div class="container-fluid panel-container">
+        <div class="col-xs-6 text-left">
+<h3>Current Balance: <span class="label label-default"><%= number_to_currency(@balance, :unit => "£") %></span></h3>
+        </div>
+        <div class="col-xs-6 text-right">
+<%= form_tag charges_path do %>
 
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 
+          data-name="Treemo App"
+          data-currency="gbp"
+
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="500 Credits"
+          data-amount="10000"
+          data-label="Get 500 credits for £100"
+          data-bitcoin="true"></script></p>
+<% end %>
+</div>
+</div>
 <% if @locations.count > 0 %>
 
 <h3><%= pluralize(@locations.count, "location")  %> total <small><%=  pluralize(@locations.map {|location| location.checkins.count}.inject(:+), "checkin")  %> all time</small></h3>
@@ -17,24 +35,13 @@
       </div>
     </div>
   <div class="panel-body">
-      <%= area_chart location.checkins.group_by_day(:created_at).count %>
+    <%= area_chart location.checkins.group_by_day(:created_at).count %>
   </div>
   </div>
   <% end %>
   <p><%= link_to(" Add another location", new_location_path)%>
 
-<%= form_tag charges_path do %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-name="Treemo App"
-          data-currency="gbp"
-
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="500 Credits"
-          data-amount="10000"
-          data-label="Get 500 credits for £100"
-          data-bitcoin="true"></script></p>
-<% end %>
 
 <% else %>
 <div class="jumbotron" id='add-location'>

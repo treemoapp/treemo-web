@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :locations, dependent: :destroy
   has_many :checkins, dependent: :destroy
+  has_many :payments, dependent: :destroy
+
 
   def self.from_omniauth(auth)
     where(provider: auth["provider"], uid: auth["uid"]).first_or_create do |user|
