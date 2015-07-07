@@ -1,27 +1,16 @@
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
 <div class="table-responsive">
-<div class="container-fluid panel-container">
-        <div class="col-xs-6 text-left">
-<h3>Current Balance: <span class="label label-default"><%= number_to_currency(@balance, :unit => "£") %></span></h3>
-        </div>
-        <div class="col-xs-6 text-right">
-<%= form_tag charges_path do %>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-
-          data-name="Treemo App"
-          data-currency="gbp"
-
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="500 Credits"
-          data-amount="10000"
-          data-label="Get 500 credits for £100"
-          data-bitcoin="true"></script></p>
-<% end %>
-</div>
-</div>
 <% if @locations.count > 0 %>
+<div class="container-fluid panel-container">
+    <div class="col-md-6 text-left">
+      <h3><%= pluralize(@locations.count, "location")  %>: <%=  pluralize(@locations.map {|location| location.checkins.count}.inject(:+), "checkin")  %> all time</h3>
+    </div>
+    <div class="col-md-6  text-right">
+      <h3>Current Balance: <span class="label label-default"><%= number_to_currency(@balance, :unit => "£") %></span></h3>
+    </div>
 
-<h3><%= pluralize(@locations.count, "location")  %> total <small><%=  pluralize(@locations.map {|location| location.checkins.count}.inject(:+), "checkin")  %> all time</small></h3>
+</div>
 <%= content_tag_for(:tr, @locations) do |location| %>
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -39,7 +28,14 @@
   </div>
   </div>
   <% end %>
-  <p><%= link_to(" Add another location", new_location_path)%>
+
+  <div class="container-fluid panel-container">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <%= link_to(" Add another location", new_location_path, class: "btn btn-lg btn-success")%>
+        <button id="customButton" class="btn btn-lg btn-primary">Get 500 credits for £100 >></button>
+      </div>
+    </div>
+
 
 
 
@@ -47,7 +43,7 @@
 <div class="jumbotron" id='add-location'>
 <h1>Are you a business owner?</h1>
 <p class="lead">Register your business location with Treemo so your customers can start checking-in.</p>
-<p><%= link_to(" Add a location now >>", new_location_path, class: "btn btn-lg btn-success", id: 'add-location-button')%></p>
+<p><%= link_to(" Add a location now >>", new_location_path, class: "btn btn-lg btn-success", id: 'add-location-button')%> </p>
 
 </div>
 
@@ -60,3 +56,30 @@
 
 
   </div>
+
+  <script>
+  var handler = StripeCheckout.configure({
+    key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+    image: "<%= image_path 'treemo-logo.png' %>",
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Treemo App',
+      description: '500 credits',
+      currency: "gbp",
+      amount: 10000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+  </script>
