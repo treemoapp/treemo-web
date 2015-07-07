@@ -18,7 +18,9 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'gbp'
     )
-
+    Location.create(name: @amount)
+    redirect_to root_path
+    flash[:error] = "Thanks for your payment! You really are terrific."
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
