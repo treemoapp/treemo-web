@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    User.all
+    @locations = Location.where(user: current_user)
+    @total_checkins = Checkin.count
   end
 end
