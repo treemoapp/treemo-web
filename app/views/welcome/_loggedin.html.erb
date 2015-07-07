@@ -32,45 +32,30 @@
   <div class="container-fluid panel-container">
       <div class="col-md-6 col-md-offset-3 text-center">
         <p>
-          <%= link_to(" Add another location", new_location_path, class: "btn btn-lg btn-success")%>
-        </p>
-        <p>
+
+
 
 
 
         <%= form_tag charges_path do %>
         <script src="https://checkout.stripe.com/checkout.js"></script>
-        <button id="customButton" class="btn btn-lg btn-primary">Get 500 credits for £100 >></button>
-        <script>
-        var handler = StripeCheckout.configure({
-          key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-          image: "<%= image_path 'treemo-logo.png' %>",
-          token: function(token) {
-            // Use the token to create the charge with a server-side script.
-            // You can access the token ID with `token.id`
-          }
-        });
-
-        $('#customButton').on('click', function(e) {
-          // Open Checkout with further options
-          handler.open({
-            name: 'Treemo App',
-            description: '500 credits',
-            currency: "gbp",
-            amount: 10000
-          });
-          e.preventDefault();
-        });
-
-        // Close Checkout on page navigation
-        $(window).on('popstate', function() {
-          handler.close();
-        });
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-image="<%= image_path 'treemo-logo.png' %>"
+          data-name="Treemo App"
+          data-label="Buy 500 credits for £100"
+          data-description="500 credits"
+          data-currency="gbp"
+          data-amount="10000">
         </script>
 
         <% end %>
         </p>
-        
+        <p>
+        <%= link_to(" Add another location", new_location_path )%>
+        </p>
+
       </div>
     </div>
 
