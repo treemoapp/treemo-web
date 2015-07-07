@@ -33,8 +33,8 @@ feature 'user can sign in and sign out' do
       Location.create(user: User.first, name: 'Trade')
       Checkin.create(user: User.first, location: Location.first)
       visit root_path
-      expect(page).to have_content('1 locations')
-      expect(page).to have_content('1 checkins all time')
+      expect(page).to have_content('1 location')
+      expect(page).to have_content('1 checkin all time')
       expect(page).to have_content('Trade')
       expect(page).to have_css('div#chart-1')
     end
