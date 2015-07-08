@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 
     # @coordinates[:lat] = params[:lat]
     # @coordinates[:lng] = params[:lng]
-    @coordinates.lat && @coordinates.lng ? @locations = Location.by_distance(origin: @coordinates).limit(25) : @locations = Location.all
+    @coordinates.lat && @coordinates.lng ? @locations = Location.by_distance(origin: @coordinates) : @locations = Location.all
   end
 
   # GET /locations/1
