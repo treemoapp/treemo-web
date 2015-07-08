@@ -1,44 +1,47 @@
 <%= form_for(@location, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @location.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h4>
 
-      <ul>
-      <% @location.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= f.label :facebook_id, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :facebook_id, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :lat, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :lat, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :lng, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :lng, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
-    </div>
-  </div>
+<!-- Place the following text fields in your form, the names are not important. What is important is that they match the names in your javascript above -->
+<p>
+<!-- This is the textfield that will autocomplete. What is displayed here is for the user to see but the data will not go anywhere -->
+<!-- This is the hidden textfield that will be given the Persons ID based on who is selected. This value will be sent as a parameter -->
+
+     <!-- <%= f.hidden_field :facebook_id, :input_html => { :id => "link_origin_id" } %> -->
+    <%= f.text_field :name,  :id => "location_name"  %>
+    <%= f.text_field :facebook_id,  :id => "facebook_id"  %>
+    <%= f.hidden_field :lat, :id => "latitude"  %>
+    <%= f.hidden_field :lng, :id => "longitude"  %>
+</p>
+<!-- end of notes -->
+
+
+<p>
+ <%= f.submit 'Create' %>
+</p>
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#location_name').autocomplete({
+       minLength: 2,
+       source: '<%= fb_places_path(:json) %>',
+       focus: function(event, ui) {
+         $('#location_name').val(ui.item.name);
+         return false;
+      },
+    select: function(event, ui) {
+      $('#location_name').val(ui.item.name);
+      $('#facebook_id').val(ui.item.id);
+      $('#latitude').val(ui.item.location.latitude);
+      $('#longitude').val(ui.item.location.longitude);
+      return false;
+    }
+  })
+  .data( "uiAutocomplete" )._renderItem = function( ul, item ) {
+    console.log('render item called');
+    return $( "<li></li>" ).data( "item.autocomplete", item )
+      .append( "<a>" + item.name + "</a>" )
+      .appendTo( ul );
+  };
+});
+</script>
