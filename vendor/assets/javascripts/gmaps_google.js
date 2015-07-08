@@ -475,7 +475,7 @@
 
     Map.prototype.default_options = function() {
       return {
-        mapTypeId: this.primitives().mapTypes('ROADMAP'),
+        mapTypeId: this.primitives().mapTypes('TERRAIN'),
         center: new (this.primitives().latLng)(0, 0),
         zoom: 8
       };
