@@ -1,0 +1,2 @@
+module FbPlacesHelper
+end

@@ -18,4 +18,5 @@
 //= require underscore
 //= require gmaps_google
 //= require gmaps_renderer
+//= require jquery-ui/autocomplete
 //= require_tree .

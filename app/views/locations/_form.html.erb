@@ -1,5 +1,5 @@
 <%= form_for(@location, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @location.errors.any? %>
+<% if @location.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <h4><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h4>
@@ -11,34 +11,63 @@
       </ul>
     </div>
   <% end %>
-
+<p>
+  Enter the name of your business as it appears on Facebook, we will copy across the id, latitude and longitude automatically
+</p>
   <div class="form-group">
-    <%= f.label :facebook_id, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :facebook_id, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <%= f.label :name, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
       <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :lat, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :lat, class: "form-control" %>
+    <%= f.label :facebook_page_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.number_field :facebook_id, class: "form-control",  :id => "facebook_id",  :readonly => true %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :lng, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :lng, class: "form-control" %>
+    <%= f.label :latitude, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :lat, class: "form-control", :id => "latitude",  :readonly => true  %>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <%= f.label :longitude, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :lng, class: "form-control", :id => "longitude",  :readonly => true   %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-4">
       <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
+
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#location_name').autocomplete({
+       minLength: 2,
+       source: '<%= fb_places_path(:json) %>',
+       focus: function(event, ui) {
+         $('#location_name').val(ui.item.name);
+         return false;
+      },
+    select: function(event, ui) {
+      $('#location_name').val(ui.item.name);
+      $('#facebook_id').val(ui.item.id);
+      $('#latitude').val(ui.item.location.latitude);
+      $('#longitude').val(ui.item.location.longitude);
+      return false;
+    }
+  })
+  .data( "uiAutocomplete" )._renderItem = function( ul, item ) {
+    console.log('render item called');
+    return $( "<li></li>" ).data( "item.autocomplete", item )
+      .append( "<a>" + item.name + "</a>" )
+      .appendTo( ul );
+  };
+});
+</script>

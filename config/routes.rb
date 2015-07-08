@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :checkins, only: [:index, :create, :show]
   resources :locations
+  resources :fb_places
+  resources :charges
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # The priority is based upon order of creation: first created -> highest priority.
