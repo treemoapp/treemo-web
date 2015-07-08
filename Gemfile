@@ -45,6 +45,10 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'groupdate'
 gem "chartkick"
 
+# Required for adding a location
+gem 'jquery-ui-rails'
+gem 'koala'
+gem 'rails4-autocomplete'
 
 group :development, :test do
 
