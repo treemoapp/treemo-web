@@ -46,6 +46,7 @@ gem 'groupdate'
 gem "chartkick"
 
 gem 'gmaps4rails'
+gem 'underscore-rails'
 
 group :development, :test do
 
