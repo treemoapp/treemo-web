@@ -74,6 +74,11 @@ Add the following ~/.bash_profile:
 
 export TREEMO_APP_ID=''
 export TREEMO_APP_SECRET=''
+export STRIPE_PUB_TEST=''
+export STRIPE_SECRET_TEST=''
+
+and for production:
+
 
 Actual IDs will be circulated within the team
 
