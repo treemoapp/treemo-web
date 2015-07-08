@@ -45,6 +45,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'groupdate'
 gem "chartkick"
 
+gem 'gmaps4rails'
 
 group :development, :test do
 
