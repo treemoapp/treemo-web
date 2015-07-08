@@ -1,8 +1,6 @@
-require 'byebug'
 class FbPlacesController < ApplicationController
   def index
     @oauth = Koala::Facebook::OAuth.new( ENV["TREEMO_APP_ID"], ENV["TREEMO_APP_SECRET"])
-    require 'byebug'
     # I will explain this part in a moment.
     if params[:term]
       oauth_token = ENV["TREEMO_FB_OAUTH"]
