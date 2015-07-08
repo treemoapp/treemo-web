@@ -19,6 +19,9 @@
   <div class="panel-body">
       <%= area_chart location.checkins.group_by_day(:created_at).count %>
   </div>
+   <div class="panel-footer">
+  <%= link_to 'http://www.facebook.com/' + location.facebook_id.to_s, 'http://www.facebook.com/' + location.facebook_id.to_s, :target => "_blank" %>
+  </div>
   </div>
   <% end %>
   <p><%= link_to(" Add another location", new_location_path, class: "btn btn-lg btn-success")%></p>

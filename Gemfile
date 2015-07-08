@@ -47,6 +47,7 @@ gem "chartkick"
 
 # Required for adding a location
 gem 'jquery-ui-rails'
+gem 'jquery-ui-sass-rails'
 gem 'koala'
 gem 'rails4-autocomplete'
 

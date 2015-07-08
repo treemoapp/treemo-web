@@ -5,7 +5,7 @@ class FbPlacesController < ApplicationController
     require 'byebug'
     # I will explain this part in a moment.
     if params[:term]
-      oauth_token = 'CAACEdEose0cBAFj5YbKpZCNweEIDh6QvIKzljuXKRs4vZC9NHFZAYZCWAkUyL3RhMZB6WH6hGSt7KOwD54DR9EOafyV467C3OeVlk8mSgAavW2rvyxzonyLR8eoSW95KNaQHe7fiD2sqDfREKfZCesZBtaVZAjkgM6Qfo2oHKr4GCMm4v5yksIwVOV9sKowoBnFxf8Oj5fO06j48aRTSq8lEbSO4GjS4eV3AqlYcK4iGEQZDZD'
+      oauth_token = 'CAACEdEose0cBAEiY7VLaIZC2l4HHfQTtbqgOoiomWGMfnvbrWGXtxLQ1lufGatJSKkCGZBjZCEaM9oWdSVwsdCl5RAZBPYt8nsjoInb1DjgCnyZCzfZCW7Af6woCqD2Q6MwraFqakfuckWt7wjCRwJFmVQKtHUwIwLZADMFs899JBT4XTQLN6A6T2tbMesMpIRI1tt5by4anj9BlMCTyXR3vSmC5ruLLKUFjQbJOxjRZAwZDZD'
       # oauth_token = @oauth.get_user_info_from_cookies(cookies)
       # @people = Location.where('name ILIKE ?', "#{params[:term]}%")
       # byebug
