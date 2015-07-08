@@ -45,6 +45,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'groupdate'
 gem "chartkick"
 
+gem 'koala'
 
 group :development, :test do
 
