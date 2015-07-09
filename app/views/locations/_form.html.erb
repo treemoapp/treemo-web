@@ -66,7 +66,7 @@
   .data( "uiAutocomplete" )._renderItem = function( ul, item ) {
     console.log('render item called');
     return $( "<li></li>" ).data( "item.autocomplete", item )
-      .append( "<a>" + item.name + "</a>" )
+      .append( "<a>" + item.name + ' (' + item.location.street + ' ' + item.location.city + ', ' + item.location.country + ')' + "</a>" )
       .appendTo( ul );
   };
 });
