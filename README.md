@@ -13,7 +13,7 @@ Collaborators:
 [Dan Bolger](https://github.com/dan-bolger)
 
 [Fiona Abrams](https://github.com/smarbaf)
-
+-----
 https://www.youtube.com/watch?v=GKo-Sh5F9QM
 
 Contribute to global reforestation, one check-in at a time - web & mobile app @ Makers Academy - Final Project
